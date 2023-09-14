@@ -3,6 +3,10 @@
 import argparse
 import os
 
+class RetVal():
+    OK = 0
+    ERROR = 1
+
 class Tools:
     APP_NAME = "Powerpoint to planner"
     APP_VERSION = "1.0.0"
