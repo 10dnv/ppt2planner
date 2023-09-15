@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 from pptx import Presentation
 from tools import RetVal
+from tools import Settings
 import os
 
 class Pptx_Format():
-
-    SONG_PREFIX = "DNV "
-    MIN_SENTENCE_LEN = 3
-    ignored_keywords ={''}
 
     def __init__(self, in_path, out_path) -> None:
          self.input_dir = in_path
@@ -38,7 +35,7 @@ class Pptx_Format():
             print(f"    > File {i + 1}/{len(pptx_file_list)}", end='')
 
             #Extract song title
-            song_title = self.SONG_PREFIX + pptx_file_list[i].split('.')[0]
+            song_title = Settings.SONG_PREFIX + pptx_file_list[i].split('.')[0]
 
             #Open input file
             input_file = open(self.input_dir  + pptx_file_list[i], "rb")
@@ -68,7 +65,7 @@ class Pptx_Format():
                         #For each sentence in paragraph
                         for sentence in paragraph.runs:
                             #Filter for small words, like slide 1/3
-                            if len(sentence.text) > self.MIN_SENTENCE_LEN and sentence.text not in self.ignored_keywords:
+                            if len(sentence.text) > Settings.MIN_SENTENCE_LEN and sentence.text not in Settings.ignored_keywords:
                                 output_file.write(sentence.text + '\n')
 
                 #Increment verse for next slide

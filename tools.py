@@ -7,6 +7,11 @@ class RetVal():
     OK = 0
     ERROR = 1
 
+class Settings():
+    SONG_PREFIX = ""
+    MIN_SENTENCE_LEN = 3
+    ignored_keywords ={''}
+
 class Tools:
     APP_NAME = "P O W E R P O I N T   T O   P L A N N E R"
     APP_VERSION = "1.0.0"
