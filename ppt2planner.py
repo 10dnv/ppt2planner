@@ -14,11 +14,17 @@ def main():
     #Printing Hello message
     print("\n" + Tools.APP_NAME)
 
-    #PPTX files
     print(f"Looking for files inside: {in_dir}")
+
     number_pptx = pptx_obj.CountFiles()
-    print(f"PPTX files found: {number_pptx}")
+    number_ppt  = ppt_obj.CountFiles()
+
+    print(f"PPTX files found:  {number_pptx}")
+    print(f"PPT files found:   {number_ppt}")
+    print(f"Total input files: {number_ppt + number_pptx}\n")
+
     pptx_obj.ProcessFiles()
+
 
     return 0
 

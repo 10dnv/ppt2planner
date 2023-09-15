@@ -8,7 +8,7 @@ class RetVal():
     ERROR = 1
 
 class Tools:
-    APP_NAME = "Powerpoint to planner"
+    APP_NAME = "P O W E R P O I N T   T O   P L A N N E R"
     APP_VERSION = "1.0.0"
 
     def dir_path(string):
