@@ -24,6 +24,7 @@ def main():
     print(f"Total input files: {number_ppt + number_pptx}\n")
 
     pptx_obj.ProcessFiles()
+    ppt_obj.ProcessFiles()
 
 
     return 0

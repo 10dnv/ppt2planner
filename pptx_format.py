@@ -38,7 +38,7 @@ class Pptx_Format():
             song_title = Settings.SONG_PREFIX + pptx_file_list[i].split('.')[0]
 
             #Open input file
-            input_file = open(self.input_dir  + pptx_file_list[i], "rb")
+            input_file = open(self.input_dir + '/' + pptx_file_list[i], "rb")
 
             #Open output file
             output_file = open(f"{self.output_dir}/{song_title}.txt", "w+",encoding="utf-8")
