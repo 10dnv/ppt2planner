@@ -12,7 +12,7 @@ def main():
     pptx_obj = Pptx_Format(in_dir, out_dir)
 
     #Printing Hello message
-    print(Tools.APP_NAME)
+    print("\n" + Tools.APP_NAME)
 
     #PPTX files
     print(f"Looking for files inside: {in_dir}")
