@@ -64,7 +64,9 @@ class Ppt_Format:
                     verse +=1
                 else:
                     # print(line.strip())
-                    all_lines.append(line.strip())
+                    #Filter for small words, like slide 1/3 and ignored words
+                    if len(line.strip()) > Settings.MIN_SENTENCE_LEN and line.strip() not in Settings.ignored_keywords:
+                        all_lines.append(line.strip())
                 prev_line = line
 
 
