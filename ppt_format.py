@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os
-from tools import Tools, RetVal, Settings
+from tools import RetVal, Settings
 
 class Ppt_Format:
     def __init__(self, in_path, out_path) -> None:
@@ -38,5 +38,39 @@ class Ppt_Format:
             file_path =f"{self.input_dir}/{ppt_file_list[i]}"
             file_path = file_path.replace(' ', '\\ ')
 
+            #Extract song text using tika
             song_text = str(os.popen(f"tika --text {file_path}").read())
-            # print(song_text)
+
+            #Open output file
+            output_file = open(f"{self.output_dir}/{song_title}.txt", "w+",encoding="utf-8")
+
+            all_lines = []
+
+            # print(f"{{title: {song_title}}}\n")
+            all_lines.append(f"{{title: {song_title}}}\n")
+
+            prev_line =""
+            verse = 1
+            # print(f"\n{{comment: Verse {verse}}}")
+            all_lines.append(f"\n{{comment: Verse {verse}}}")
+            verse += 1
+
+            for line in song_text.split("\n"):
+                if  line == "" and prev_line =="":
+                    continue
+                elif line =="":
+                    # print(f"\n{{comment: Verse {verse}}}")
+                    all_lines.append(f"\n{{comment: Verse {verse}}}")
+                    verse +=1
+                else:
+                    # print(line.strip())
+                    all_lines.append(line.strip())
+                prev_line = line
+
+
+            #Write lines into the output file
+            for line in range(0, len(all_lines) - 1):
+                output_file.write(all_lines[line] + '\n')
+
+            #Close the output file
+            output_file.close()
