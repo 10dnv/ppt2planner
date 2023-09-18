@@ -10,7 +10,8 @@ class RetVal():
 class Settings():
     SONG_PREFIX = ""
     MIN_SENTENCE_LEN = 3
-    ignored_keywords ={''}
+    ignored_keywords ={}
+    AUTHOR = ""
 
 class Tools:
     APP_NAME = "P O W E R P O I N T   T O   P L A N N E R"

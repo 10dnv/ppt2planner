@@ -49,6 +49,10 @@ class Ppt_Format:
             # print(f"{{title: {song_title}}}\n")
             all_lines.append(f"{{title: {song_title}}}\n")
 
+            #Add the author Tag
+            if Settings.AUTHOR != "":
+                all_lines.append(f"{{author: {Settings.AUTHOR}}}\n")
+
             prev_line =""
             verse = 1
             # print(f"\n{{comment: Verse {verse}}}")

@@ -49,6 +49,10 @@ class Pptx_Format():
             #Print the song title tag
             output_file.write(f"{{title: {song_title}}}\n")
 
+            #Add the author Tag
+            if Settings.AUTHOR != "":
+                output_file.write(f"{{author: {Settings.AUTHOR}}}\n")
+
             #Parse each slide (each slide represents 1 verse)
             verse = 1
 

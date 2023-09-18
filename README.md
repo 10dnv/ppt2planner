@@ -41,5 +41,5 @@ The output files can be imported into Planner.
 
 - ~~Support PPTX file format~~
 
-- Support PPT file format
+- ~~Support PPT file format~~
 
