@@ -6,6 +6,7 @@ This tool will convert ppt/pptx files to Presenter by WorshipTools file format.
 
 ## Features
 
+- PPT file support
 - PPTX file support
 - Auto title + verse tags
 - Filter unwanted words
@@ -45,4 +46,6 @@ The output files can be imported into Planner.
 - ~~Support PPTX file format~~
 
 - ~~Support PPT file format~~
+
+- Implement crossplatform GUI
 
