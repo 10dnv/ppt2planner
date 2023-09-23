@@ -2,29 +2,35 @@
 
 from ppt_format import Ppt_Format
 from pptx_format import Pptx_Format
-from tools import Tools, RetVal
+from tools import Tools
+from gui import Gui
 
 
 
 def main():
-    in_dir, out_dir = Tools.parse_inputs()
-    ppt_obj  = Ppt_Format(in_dir, out_dir)
-    pptx_obj = Pptx_Format(in_dir, out_dir)
+    in_dir, out_dir, gui_en = Tools.parse_inputs()
+    
+    if gui_en == True:
+        gui_obj = Gui()
+        gui_obj.render()
+    else:
+        ppt_obj  = Ppt_Format(in_dir, out_dir)
+        pptx_obj = Pptx_Format(in_dir, out_dir)
 
-    #Printing Hello message
-    print("\n" + Tools.APP_NAME)
+        #Printing Hello message
+        print("\n" + Tools.APP_NAME)
 
-    print(f"Looking for files inside: {in_dir}")
+        print(f"Looking for files inside: {in_dir}")
 
-    number_pptx = pptx_obj.CountFiles()
-    number_ppt  = ppt_obj.CountFiles()
+        number_pptx = pptx_obj.CountFiles()
+        number_ppt  = ppt_obj.CountFiles()
 
-    print(f"PPTX files found:  {number_pptx}")
-    print(f"PPT files found:   {number_ppt}")
-    print(f"Total input files: {number_ppt + number_pptx}\n")
+        print(f"PPTX files found:  {number_pptx}")
+        print(f"PPT files found:   {number_ppt}")
+        print(f"Total input files: {number_ppt + number_pptx}\n")
 
-    pptx_obj.ProcessFiles()
-    ppt_obj.ProcessFiles()
+        pptx_obj.ProcessFiles()
+        ppt_obj.ProcessFiles()
 
 
     return 0
