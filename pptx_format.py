@@ -6,7 +6,7 @@ import os
 
 class Pptx_Format():
 
-    def __init__(self, in_path, out_path= "") -> None:
+    def init(self, in_path="", out_path= "") -> None:
          self.input_dir = in_path
          self.output_dir = out_path
 

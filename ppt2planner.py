@@ -14,8 +14,10 @@ def main():
         gui_obj = Gui()
         gui_obj.render()
     else:
-        ppt_obj  = Ppt_Format(in_dir, out_dir)
-        pptx_obj = Pptx_Format(in_dir, out_dir)
+        ppt_obj  = Ppt_Format()
+        pptx_obj = Pptx_Format()
+        ppt_obj.init(in_dir, out_dir)
+        pptx_obj.init(in_dir, out_dir)
 
         #Printing Hello message
         print("\n" + Tools.APP_NAME)
