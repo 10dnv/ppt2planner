@@ -10,12 +10,14 @@ from gui import Gui
 def main():
     in_dir, out_dir, gui_en = Tools.parse_inputs()
     
+    ppt_obj  = Ppt_Format()
+    pptx_obj = Pptx_Format()
+
     if gui_en == True:
         gui_obj = Gui()
+        gui_obj.init(ppt_obj, pptx_obj)
         gui_obj.render()
     else:
-        ppt_obj  = Ppt_Format()
-        pptx_obj = Pptx_Format()
         ppt_obj.init(in_dir, out_dir)
         pptx_obj.init(in_dir, out_dir)
 

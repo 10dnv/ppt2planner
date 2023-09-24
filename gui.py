@@ -6,11 +6,19 @@ from pptx_format import Pptx_Format
 from ppt_format import Ppt_Format
 
 class Gui:
+    
+    def init(self, ppt_obj, pptx_obj):
+        self.ppt_obj  = ppt_obj
+        self.pptx_obj = pptx_obj
+
+        self.in_path_str =""
+        self.out_path_str=""
+
     def render(self):
         window = tk.Tk()
         window.title(f"{Tools.APP_NAME}     v{Tools.APP_VERSION}")
         window.resizable(False, False)
-        window.geometry('560x480')
+        window.geometry('560x300')
 
 
         label1 = tk.Label(text="Select the input directory containing PPT/PPTX files").place(x=5, y=20)
@@ -31,10 +39,6 @@ class Gui:
         label4 = tk.Label(text="PPTX files found: ").place(x=5, y=205)
         self.label_pptx_files_number = tk.Label(text="None")
         self.label_pptx_files_number.place(x=115, y=205)
-
-        #Create objects to interact with
-        self.pptx_obj = Pptx_Format()
-        self.ppt_obj  = Ppt_Format()
        
         btn_start = tk.Button(text="START", command= lambda: self.StartBtnHandler()).place(x=470, y=205)
         window.mainloop()
@@ -49,8 +53,11 @@ class Gui:
         path = fd.askdirectory()
         inputX.delete(0, tk.END)
         inputX.insert(0,path)
-        self.pptx_obj.init(path)
-        self.ppt_obj.init(path)
+
+        self.in_path_str = path
+
+        self.ppt_obj.init(in_path  = path)
+        self.pptx_obj.init(in_path = path)
 
         #update label with number of pptx files
         self.label_ppt_files_number.config(text=self.ppt_obj.CountFiles())
@@ -61,8 +68,13 @@ class Gui:
         path = fd.askdirectory()
         inputX.delete(0, tk.END)
         inputX.insert(0,path)
-
+        self.out_path_str = path
 
     def StartBtnHandler(self):
-       pass
+        if self.in_path_str == "" or self.out_path_str == "":
+            tk.messagebox.showerror(title="ERROR", message="ERROR: Input/Output path cannot be empty!")
+            return
+        
+        self.ppt_obj.init(self.in_path_str, self.out_path_str)
+        self.pptx_obj.init(self.in_path_str, self.out_path_str)
     
